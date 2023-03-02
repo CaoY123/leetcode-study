@@ -28,7 +28,8 @@ public class ReverseLinkedListTest {
         showLinkedList(head);
         // 这里发生了引用的拷贝，而不是对原引用的值进行变更，故需要将处理后的head地址重新
         // 赋给外面的head，才能保证运行正确。
-        head = reverseList(head);
+//        head = reverseList(head);
+        head = reverseList2(head);
         System.out.print("逆置后：");
         showLinkedList(head);
     }
@@ -50,7 +51,18 @@ public class ReverseLinkedListTest {
         return head;
     }
 
-    // 给定头结点打印单链表
+    // 递归法反转单链表 - 内存开销有点大，但是思想很不错
+    public static ListNode reverseList2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode newHead = reverseList2(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
+    }
+
+    // 给定头结点打印单链表（迭代法）
     public static void showLinkedList(ListNode head) {
         if (head == null) {
             System.out.println("该链表为空，没有元素！");

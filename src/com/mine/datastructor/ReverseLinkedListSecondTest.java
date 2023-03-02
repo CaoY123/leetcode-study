@@ -35,6 +35,7 @@ public class ReverseLinkedListSecondTest {
         showLinkedList(head);
     }
 
+    // 迭代法
     public static ListNode reverseBetween(ListNode head, int left, int right) {
         // 对下列特殊情况的链表不作局部逆置处理
         if (head == null || head.next == null || right - left <= 0) {
@@ -71,6 +72,32 @@ public class ReverseLinkedListSecondTest {
         }
         preLeft = null;
 
+        return head;
+    }
+
+    // 递归法
+    // 递归方法1：逆置以head为头结点的链表的前n个元素（n >= 1）
+    // 记录后继结点
+    private static ListNode successor = null;
+
+    public static ListNode reverseFirstN(ListNode head, int n) {
+        if (n == 1) {
+            successor = head.next;
+            return head;
+        }
+        ListNode newHead = reverseFirstN(head.next, n - 1);
+        head.next.next = head;
+        head.next = successor;
+        return newHead;
+    }
+
+    // 递归方法2：
+    // 下面的函数是局部翻转以head为头结点的链表，范围为索引left - right，其中索引是从1开始的
+    public static ListNode reverseBetween2(ListNode head, int left, int right) {
+        if(left == 1) {
+            return reverseFirstN(head, right);
+        }
+        head.next = reverseBetween2(head.next, left - 1, right - 1);
         return head;
     }
 
