@@ -14,7 +14,7 @@ import java.util.List;
  * 145. 二叉树的后序遍历
  * 链接：https://leetcode.cn/problems/binary-tree-postorder-traversal/
  */
-public class TraverseOrderTest {
+public class BasicTraverseOrderTest {
 
     public static void main(String[] args) {
         TreeNode node1 = new TreeNode(1);
