@@ -41,7 +41,7 @@ public class InsertSortTest {
                 array[j + 1] = array[j];
             }
             array[index] = tmp;
-            System.out.println("第" + (i + 1) + "轮插入排序：" + Arrays.toString(array));
+            System.out.println("第" + i + "轮插入排序：" + Arrays.toString(array));
         }
         return array;
     }
